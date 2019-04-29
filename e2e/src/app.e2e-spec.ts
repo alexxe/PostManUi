@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to PostManUi!');
+    expect(page.getTitleText()).toEqual('Welcome to angular7-bootstrap4-demo!');
   });
 
   afterEach(async () => {

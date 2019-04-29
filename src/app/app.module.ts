@@ -1,11 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { AppComponent } from "./app.component";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [NgbModule, BrowserModule],
+  imports: [BrowserModule, TooltipModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent]
 })
