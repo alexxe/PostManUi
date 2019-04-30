@@ -7,7 +7,13 @@ import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, CoreModule, routing, TooltipModule.forRoot(), BsDropdownModule.forRoot(), ButtonsModule.forRoot(), AccordionModule.forRoot()],
+  imports: [BrowserModule, 
+    CoreModule, 
+    routing,
+    TooltipModule.forRoot(), 
+    BsDropdownModule.forRoot(), 
+    ButtonsModule.forRoot(),
+     AccordionModule.forRoot()],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
