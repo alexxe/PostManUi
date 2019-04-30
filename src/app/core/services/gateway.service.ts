@@ -8,12 +8,14 @@ import {
 import { setContext } from 'apollo-link-context';
 import { onError } from 'apollo-link-error';
 import { environment } from '../../../environments/environment';
+import { Auth } from './auth.service';
 
 @Injectable()
 export class GatewayService {
-  constructor(apollo: Apollo, httpLink: HttpLink) {
+  constructor(apollo: Apollo, httpLink: HttpLink, private auth: Auth) {
     const http = httpLink.create({
-      uri: `${environment.protocol}://${environment.graphApiEndpoint}/graphql`
+      uri: `${environment.protocol}://${environment.graphApiEndpoint}/graphql`,
+      withCredentials: true
     });
 
     const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -29,8 +31,8 @@ export class GatewayService {
       }
     }) as any;
 
-    const authContext = setContext((_, { headers }) => {
-      const token = null;
+    const authContext = setContext(async (_, { headers }) => {
+      const token = this.auth.getCachedAccessToken();
       if (!null) {
         return {
           headers: {

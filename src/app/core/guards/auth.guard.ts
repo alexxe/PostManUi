@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private auth: Auth, private router: Router) {}
 
   checkLogin(url: string): Observable<boolean> | boolean {
-    if (!this.auth.token) {
+    if (!this.auth.getCachedAccessToken()) {
       this.router.navigate(['login'], { queryParams: { state: url } });
     }
 
