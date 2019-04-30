@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component";
 import { appRoutingProviders, routing } from './app.routes';
 import { CoreModule } from './core/core.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, 
@@ -13,7 +14,7 @@ import { CoreModule } from './core/core.module';
     TooltipModule.forRoot(), 
     BsDropdownModule.forRoot(), 
     ButtonsModule.forRoot(),
-     AccordionModule.forRoot()],
+    AccordionModule.forRoot()],    
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
