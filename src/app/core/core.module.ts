@@ -7,11 +7,12 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from './guards/auth.guard';
 import { Auth } from './services/auth.service';
 import { GatewayService } from './services/gateway.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   imports: [SharedModule, CommonModule, RouterModule],
-  declarations: [LoginComponent, HomeComponent],
-  exports: [LoginComponent, HomeComponent],
+  declarations: [LoginComponent, HomeComponent, DashboardComponent],
+  exports: [LoginComponent, HomeComponent, DashboardComponent],
   providers: [AuthGuard, Auth, GatewayService]
 })
 export class CoreModule {}

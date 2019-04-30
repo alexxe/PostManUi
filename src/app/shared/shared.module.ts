@@ -70,4 +70,5 @@ import {
   entryComponents: [],
   providers: []
 })
+
 export class SharedModule {}
