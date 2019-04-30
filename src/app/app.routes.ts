@@ -1,11 +1,17 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
-//import { LoginComponent } from './core/components/login/login.component';
-
+import { LoginComponent } from './core/components/login/login.component';
+import { HomeComponent } from './core/components/home/home.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const appRoutes: Routes = [
-  //{ path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '/login' }
+  {
+    path: '',
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: '/home' }
 ];
 
 export const appRoutingProviders: any[] = [];
