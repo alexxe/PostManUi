@@ -11,6 +11,7 @@ import { myPost } from './model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public posts: any[];
   constructor(private apollo: Apollo, private auth: Auth) {}
 
   ngOnInit() {
@@ -24,7 +25,10 @@ export class HomeComponent implements OnInit {
         }
       })
       .valueChanges.subscribe(result => {
-        console.log(result);
+        if (result.data) {
+          const data: any = result.data;
+          this.posts = data.post;
+        }
       });
   }
 }

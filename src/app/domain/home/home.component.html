@@ -1,1 +1,22 @@
-<p>Home</p>
+<div class="container">
+  <h2>Posts</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Slug</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of posts; let index = index">
+        <tr>
+          <td>{{ item.title }}</td>
+          <td>{{ item.body }}</td>
+          <td>{{ item.slug }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

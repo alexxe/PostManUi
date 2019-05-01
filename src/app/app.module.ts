@@ -7,7 +7,6 @@ import { CoreModule } from './core/core.module';
 import { DomainModule } from './domain/domain.module';
 import { SharedModule } from './shared/shared.module';
 
-//import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './core/guards/auth.guard';
 @NgModule({
@@ -17,7 +16,6 @@ import { AuthGuard } from './core/guards/auth.guard';
     CoreModule,
     DomainModule,
     routing,
-    //  GraphQLModule,
     HttpClientModule,
     SharedModule
   ],

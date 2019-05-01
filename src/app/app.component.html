@@ -54,3 +54,23 @@
     <router-outlet></router-outlet>
   </div>
 </main>
+
+<ng-container *ngFor="let item of items; let index = index">
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="isCollapsed[index] = !isCollapsed[index]"
+    [attr.aria-expanded]="!isCollapsed[index]"
+    [attr.aria-controls]="'collapseViewMore-' + index"
+  >
+    Toggle collapse
+  </button>
+  <hr />
+  <div
+    [id]="'collapseViewMore-' + index"
+    [collapse]="isCollapsed[index]"
+    class="card card-block card-header"
+  >
+    <div class="well well-lg">{{ item }}</div>
+  </div>
+</ng-container>
