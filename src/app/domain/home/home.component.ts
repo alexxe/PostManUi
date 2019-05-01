@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Auth } from 'src/app/core/services/auth.service';
+import { myPost } from './model';
 
 @Component({
   selector: 'app-home',
@@ -9,25 +11,17 @@ import gql from 'graphql-tag';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private auth: Auth) {}
 
   ngOnInit() {
-    console.log('home');
     this.apollo
       .watchQuery({
-        query: gql`
-          {
-            post {
-              body
-              cover_imag
-              created_on
-              id
-              intro
-              slug
-              title
-            }
+        query: myPost,
+        variables: {
+          $where: {
+            user_id: { _eq: this.auth.user.id }
           }
-        `
+        }
       })
       .valueChanges.subscribe(result => {
         console.log(result);

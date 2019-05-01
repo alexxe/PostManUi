@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class Auth {
   private token;
   private tokenRelived: Subject<any> = new Subject();
+  public user: any;
   constructor(private http: HttpClient, private router: Router) {}
   login(username: string, password: string) {
     this.http
@@ -19,6 +20,7 @@ export class Auth {
       )
       .subscribe((res: any) => {
         this.token = res.token;
+        this.user = res.user;
         this.tokenRelived.next();
         this.router.navigate(['home']);
       });

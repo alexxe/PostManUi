@@ -32,15 +32,15 @@
             role="menu"
             aria-labelledby="button-basic"
           >
-            <li role="menuitem">
+            <li role="menuitem" *ngIf="!isAuthenticated">
               <a class="dropdown-item" routerLink="login">
                 Login
               </a>
             </li>
-            <li role="menuitem">
+            <li role="menuitem" *ngIf="isAuthenticated">
               <a class="dropdown-item" routerLink="dashboard">Dashboard</a>
             </li>
-            <li role="menuitem">
+            <li role="menuitem" *ngIf="isAuthenticated">
               <button class="dropdown-item" (click)="logout()">Logout</button>
             </li>
           </ul>

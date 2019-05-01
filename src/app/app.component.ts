@@ -14,4 +14,11 @@ export class AppComponent {
     console.log('logout');
     this.auth.logout();
   }
+
+  get isAuthenticated() {
+    if (this.auth.getCachedAccessToken()) {
+      return true;
+    }
+    return false;
+  }
 }
