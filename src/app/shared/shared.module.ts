@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+
 import {
   BsDropdownModule,
   AccordionModule,
@@ -26,7 +26,6 @@ import {
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
     AlertModule.forRoot(),
@@ -70,5 +69,4 @@ import {
   entryComponents: [],
   providers: []
 })
-
 export class SharedModule {}

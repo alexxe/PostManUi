@@ -1,4 +1,4 @@
-import { from as observableFrom, Observable } from 'rxjs';
+import { from as observableFrom, Observable, Subject } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class Auth {
   private token;
+  private tokenRelived: Subject<any> = new Subject();
   constructor(private http: HttpClient, private router: Router) {}
   login(username: string, password: string) {
     this.http
@@ -18,15 +19,21 @@ export class Auth {
       )
       .subscribe((res: any) => {
         this.token = res.token;
-        this.router.navigateByUrl('/');
+        this.tokenRelived.next();
+        this.router.navigate(['home']);
       });
   }
 
   logout() {
     this.token = null;
+    this.router.navigate(['login']);
   }
 
   getCachedAccessToken() {
     return this.token;
+  }
+
+  acquireToken(): Observable<any> {
+    return this.tokenRelived;
   }
 }

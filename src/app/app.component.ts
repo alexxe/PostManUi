@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Auth } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'post-man';
-  isCollapsed = false;
+  constructor(private auth: Auth) {}
+
+  logout() {
+    console.log('logout');
+    this.auth.logout();
+  }
 }
