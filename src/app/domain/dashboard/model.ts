@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-export const allPost = gql`
-  query post {
-    post {
+export const myPost = gql`
+  query post($where: post_bool_exp) {
+    post(where: $where) {
       body
       cover_imag
       created_on
