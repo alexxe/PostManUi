@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { QuillModule } from 'ngx-quill';
 
 import {
   BsDropdownModule,
@@ -42,7 +43,8 @@ import {
     TabsModule.forRoot(),
     TimepickerModule.forRoot(),
     TooltipModule.forRoot(),
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
+    QuillModule
   ],
   exports: [
     CommonModule,
@@ -63,7 +65,8 @@ import {
     TabsModule,
     TimepickerModule,
     TooltipModule,
-    TypeaheadModule
+    TypeaheadModule,
+    QuillModule
   ],
   declarations: [],
   entryComponents: [],
