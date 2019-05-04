@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { Auth } from './core/services/auth.service';
-import { environment } from '../environments/environment';
+import { Auth } from '../core/services/auth.service';
+import { environment } from '../../environments/environment';
 import { setContext } from 'apollo-link-context';
 import { onError } from 'apollo-link-error';
 
 const uri = `${environment.protocol}://${environment.graphApiEndpoint}/graphql`;
 export function createApollo(httpLink: HttpLink, auth: Auth) {
-  console.log('init link');
   const http = httpLink.create({
     uri: `${environment.protocol}://${environment.graphApiEndpoint}/graphql`,
     withCredentials: true
@@ -38,6 +37,7 @@ export function createApollo(httpLink: HttpLink, auth: Auth) {
       token = auth.getCachedAccessToken();
     }
     if (token) {
+      console.log('graphQL set token');
       return {
         headers: {
           ...headers,

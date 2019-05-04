@@ -5,16 +5,20 @@
     <thead>
       <tr>
         <th>Title</th>
-        <th>Body</th>
-        <th>Slug</th>
+        <th>Intro</th>
+        <th>Cover</th>
       </tr>
     </thead>
     <tbody>
       <ng-container *ngFor="let item of posts; let index = index">
         <tr>
-          <td>{{ item.title }}</td>
-          <td>{{ item.body }}</td>
-          <td>{{ item.slug }}</td>
+          <td>
+            <a href="" (click)="details($event, item?.slug)">{{
+              item.title
+            }}</a>
+          </td>
+          <td>{{ item.intro }}</td>
+          <td>{{ item.cover_imag }}</td>
         </tr>
       </ng-container>
     </tbody>

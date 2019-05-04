@@ -2,16 +2,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { LoginComponent } from './core/components/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { HomeComponent } from './domain/home/home.component';
 
 export const appRoutes: Routes = [
   {
-    path: 'home',
+    path: '',
     canActivate: [AuthGuard],
-    component: HomeComponent
+    children: [
+      {
+        path: '',
+        loadChildren: './domain/domain.module#DomainModule'
+      }
+    ]
   },
   { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '/home' }
+  { path: '**', redirectTo: '/' }
 ];
 
 export const appRoutingProviders: any[] = [];

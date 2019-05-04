@@ -1,11 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
-import { Auth } from 'src/app/core/services/auth.service';
 import { allPost } from './model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 export class HomeComponent implements OnInit, OnDestroy {
   public posts: any[];
   private ngUnsubscribe = new Subject();
-  constructor(private apollo: Apollo, private auth: Auth) {}
+  constructor(private apollo: Apollo, private router: Router) {}
 
   ngOnInit() {
     this.apollo
@@ -34,5 +32,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  public details(evt, slug) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    this.router.navigate(['post', slug]);
   }
 }

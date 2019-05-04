@@ -3,13 +3,11 @@ import gql from 'graphql-tag';
 export const allPost = gql`
   query post {
     post {
-      body
-      cover_imag
-      created_on
       id
+      cover_imag
       intro
-      slug
       title
+      slug
     }
   }
 `;
