@@ -6,7 +6,6 @@ export const getPostBySlug = gql`
       cover_imag
       title
       body
-      slug
       created_on
       user {
         name

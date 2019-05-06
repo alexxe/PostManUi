@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { QuillModule } from 'ngx-quill';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import {
   BsDropdownModule,
@@ -44,7 +44,7 @@ import {
     TimepickerModule.forRoot(),
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
-    QuillModule
+    CKEditorModule
   ],
   exports: [
     CommonModule,
@@ -66,7 +66,7 @@ import {
     TimepickerModule,
     TooltipModule,
     TypeaheadModule,
-    QuillModule
+    CKEditorModule
   ],
   declarations: [],
   entryComponents: [],

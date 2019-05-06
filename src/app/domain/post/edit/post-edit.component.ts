@@ -1,22 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators
+} from '@angular/forms';
 import { filter, map, takeUntil, switchMap } from 'rxjs/operators';
 import { Apollo } from 'apollo-angular';
 import { getPostBySlug } from './model';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
-  selector: 'app-post-details',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  selector: 'app-post-edit',
+  templateUrl: './post-edit.component.html',
+  styleUrls: ['./post-edit.component.css']
 })
-export class PostDetailsComponent implements OnInit {
-  public post: any;
+export class PostEditComponent implements OnInit {
+  public Editor = ClassicEditor;
+  public form: FormGroup;
   constructor(
     private apollo: Apollo,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      title: ['', Validators.required],
+      body: ''
+    });
+  }
 
   ngOnInit() {
     this.route.params
@@ -37,12 +49,13 @@ export class PostDetailsComponent implements OnInit {
       .subscribe(res => {
         if (res.data) {
           const data: any = res.data;
-          this.post = data.post[0];
+          const post = data.post[0];
+          this.form.patchValue(post);
         }
       });
   }
 
-  public edit() {
-    this.router.navigate(['post', 'edit', this.post.slug]);
+  save() {
+    console.log(this.form.value);
   }
 }
